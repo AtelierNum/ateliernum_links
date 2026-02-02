@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ateliernum Links</title>
+    <style>
+      /* --- Reset de base --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      /* --- Conteneur Principal (2 Colonnes) --- */
+      .container {
+        display: flex;
+        flex-wrap: wrap; /* Permet le passage à la ligne sur mobile */
+        gap: 40px; /* Espace entre les deux grandes colonnes */
+        max-width: 700px;
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      /* Chaque colonne prend au moins 300px, sinon elle passe à la ligne */
+      .column {
+        flex: 1 1 300px;
+        padding: 20px;
+      }
+
+      /* --- Style générique pour les cartes (images) --- */
+      .card {
+        display: block; /* Important pour les liens */
+        background-color: #d1d1d1; /* Couleur placeholder (gris) */
+
+        /*border: 2px solid #ffffff; /* Bordure comme sur le wireframe */
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative; /* Nécessaire pour le z-index */
+
+        /* Pour centrer votre future image dans le lien si besoin */
+        overflow: hidden;
+      }
+
+      /* Ajout de l'image à l'intérieur */
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* --- COLONNE 1 : La pile superposée (Overlap) --- */
+      .stack-gallery {
+        display: flex;
+        flex-direction: column;
+        /* Padding top pour que l'animation du premier élément ne soit pas coupée */
+        padding-top: 10px;
+        padding-bottom: 50px;
+      }
+
+      .stack-item {
+        height: 200px; /* Hauteur des rectangles */
+        width: 100%; /* Largeur fluide */
+        margin-bottom: 0;
+
+        /* L'effet de superposition */
+        margin-top: -50px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Le premier élément ne doit pas avoir de marge négative */
+      .stack-item:first-child {
+        margin-top: 0;
+      }
+
+      #fluidsim {
+        left : 0%;
+        top : -0.5%
+      }
+      #springs {
+        left : 1%;
+        top : 1%
+      }
+      #musicbox {
+        left : -2.5%;
+        top : 2%
+      }
+      #chromateque {
+        left : 0.5%;
+        top : -1.5
+      }
+      #designquiz {
+        left : -1.5%;
+        top : 0.5%
+      }
+      #interiorquiz {
+        left : 2%;
+        top : 0%
+      }
+      #website {
+        left : 0%;
+        top : -2%
+      }
+      #insta {
+        left : -2.5%;
+        top : -1%
+      }
+      #toolbox {
+        left : 1%;
+        top : 0.5%
+      }
+      #notebook {
+        left : -0.5%;
+        top : 1.5%
+      }
+      #avent {
+        left : 1.5%;
+        top : 2%
+      }
+
+      /* Animation au survol pour la pile */
+      .stack-item:hover,
+      .stack-item:focus {
+        z-index: 100; /* Passe devant tout le monde */
+        transform: scale(1.05) translateY(-10px); /* Grossit et monte un peu */
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        background-color: #bfbfbf; /* Changement léger de couleur pour l'effet */
+        outline: none;
+      }
+    
+      /* --- RESPONSIVE MOBILE --- */
+      @media (max-width: 600px) {
+        .grid-gallery {
+          /* Sur très petit écran, on peut passer à 2 colonnes si besoin */
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stack-item {
+        height: 90px; /* Hauteur des rectangles */
+        width: 100%; /* Largeur fluide */
+        margin-bottom: 0;
+
+        /* L'effet de superposition */
+        margin-top: -25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .title{
+        font-size: 0.7rem;
+        text-align: center;
+        margin-bottom: 10px;;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title">
+        <h1>Ateliernum Links</h1>
+    </div>
+
+    <div class="container">
+      <div class="column stack-gallery">
+        <a
+          href="https://b2renger.github.io/Fluid-simulation/"
+          class="card stack-item"
+          id="fluidsim">
+          <img src="assets/fluidsim.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://b2renger.github.io/Springs-web/"
+          class="card stack-item"
+          id="springs">
+          <img src="assets/springs.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://b2renger.github.io/MusicbBox3D-web/"
+          class="card stack-item"
+          id="musicbox">
+          <img src="assets/musicbox.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://b2renger.github.io/chromateque/"
+          class="card stack-item"
+          id="chromateque">
+          <img src="assets/chromateque.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://b2renger.github.io/Design-Quiz/"
+          class="card stack-item"
+          id="designquiz">
+          <img src="assets/designquiz.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://luciemrc.github.io/Quizz_interior_design/"
+          class="card stack-item"
+          id="interiorquiz">
+          <img src="assets/interiorquiz.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://ateliernum.github.io/"
+          class="card stack-item"
+          id="website">
+          <img src="assets/website.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://www.instagram.com/ateliernum/"
+          class="card stack-item"
+          id="insta">
+          <img src="assets/insta.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://ateliernum.notion.site/Bo-te-a-outils-IA-mais-pas-que-143c8d87b5918001a793d1e11c3a80ab"
+          class="card stack-item"
+          id="toolbox">
+          <img src="assets/toolbox.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://notebooklm.google.com/notebook/9d429f8d-c53f-4346-a60c-184032f266f4?original_referer=https:%2F%2Fwww.google.com%23&pli=1"
+          class="card stack-item"
+          id="notebook">
+          <img src="assets/notebook.png" alt="Description de l'image" />
+        </a>
+
+        <a
+          href="https://luciemrc.github.io/Calendrier_avent/"
+          class="card stack-item"
+          id="avent">
+          <img src="assets/avent.png" alt="Description de l'image" />
+        </a>
+    </div>
+  </body>
+</html>
